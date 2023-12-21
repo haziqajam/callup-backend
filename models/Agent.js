@@ -13,14 +13,13 @@ const agentSchema = new mongoose.Schema(
     // },
     voice_id: {
       type: String,
-      // required: true,
-      // enum: ["male-voice.mp4", "female-voice.mp4"],
-      default: "I8LWG3T24PepfiowqlRa",
+      required: true,
+      enum: ["vK3QzyncmoX3zNal2Nji", "gUzcionDlcxCd0Zlkz3f"],
+      default: "vK3QzyncmoX3zNal2Nji",
     },
     prompt: { type: String, required: true },
     sub_prompt: { type: String, required: true },
     greeting: { type: String, default: "Hey Haseeb!" },
-    // lastEdited: { type: String },
   },
   { collection: "Agent" }
 );

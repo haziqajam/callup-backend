@@ -7,6 +7,7 @@ const xss = require("xss-clean");
 const helmet = require("helmet");
 const compression = require("compression");
 const cors = require("cors");
+const fileUpload = require("express-fileupload");
 // const path = require("path");
 
 const globalErrorHandler = require("./controllers/Error");
@@ -43,6 +44,9 @@ app.use(bodyParser.json());
 
 // Data sanitization against NoSQL query injection
 app.use(mongoSanitize());
+
+// File Upload
+app.use(fileUpload());
 
 // Data sanitization against XSS
 app.use(xss());

@@ -1,3 +1,4 @@
+const xlsx = require("xlsx");
 const Contact = require("../models/Contact");
 const catchAsync = require("./../utils/catchAsync");
 
@@ -55,4 +56,35 @@ exports.deleteContact = catchAsync(async (req, res, next) => {
   }
 
   res.json({ message: "Contact deleted successfully" });
+});
+
+exports.uploadContacts = catchAsync(async (req, res, next) => {
+  const { list_name } = req.body;
+
+  const uploadedFile = req.files.uploadedFile;
+
+  // Read the uploaded Excel file
+  const workbook = xlsx.read(uploadedFile.data);
+
+  // Assuming the first sheet contains the contacts
+  const sheetName = workbook.SheetNames[0];
+  const sheet = workbook.Sheets[sheetName];
+
+  // Convert the sheet to JSON data
+  const contacts = xlsx.utils.sheet_to_json(sheet);
+
+  // Iterating through the contacts array and creating each contact
+  for (const contactData of contacts) {
+    const { name, email, phone } = contactData;
+    const createdContact = new Contact({
+      name,
+      email,
+      phone,
+      list_name: list_name,
+    });
+
+    await createdContact.save();
+  }
+
+  res.status(200).send("Contacts created successfully.");
 });
