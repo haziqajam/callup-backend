@@ -1,5 +1,5 @@
 const Campaign = require("../models/Campaign");
-const catchAsync = require("./../utils/catchAsync");
+const catchAsync = require("../Utils/catchAsync");
 
 exports.createCampaign = catchAsync(async (req, res, next) => {
   const { campaign_name, agent_id, list_name, max_budget } = req.body;

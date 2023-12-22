@@ -1,5 +1,5 @@
 const List = require("../models/List");
-const catchAsync = require("./../utils/catchAsync");
+const catchAsync = require("../Utils/catchAsync");
 
 exports.createList = catchAsync(async (req, res, next) => {
   const { name } = req.body;

@@ -1,6 +1,6 @@
 const xlsx = require("xlsx");
 const Contact = require("../models/Contact");
-const catchAsync = require("./../utils/catchAsync");
+const catchAsync = require("../Utils/catchAsync");
 
 exports.createContact = catchAsync(async (req, res, next) => {
   const { name, email, phone, list_name, createdAt } = req.body;
