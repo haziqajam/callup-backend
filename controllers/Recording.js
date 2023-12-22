@@ -1,5 +1,5 @@
 const Recording = require("../models/Recording");
-const catchAsync = require("../Utils/catchAsync");
+const catchAsync = require("../utils/catchAsync");
 
 exports.getAllRecordings = catchAsync(async (req, res, next) => {
   const allRecordings = await Recording.find({});

@@ -17,7 +17,7 @@ const listRoutes = require("./routes/List");
 const campaignRoutes = require("./routes/Campaign");
 const recordingRoutes = require("./routes/Recording");
 
-const AppError = require("./Utils/appError");
+const AppError = require("./utils/appError");
 
 // 1.) GLOBAL MIDDLEWARES
 

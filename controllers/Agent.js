@@ -1,5 +1,5 @@
 const Agent = require("../models/Agent");
-const catchAsync = require("../Utils/catchAsync");
+const catchAsync = require("../utils/catchAsync");
 
 exports.createAgent = catchAsync(async (req, res, next) => {
   const { name, voice_id, prompt, sub_prompt, greeting } = req.body;
